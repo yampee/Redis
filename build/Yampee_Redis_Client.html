@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="robots" content="index, follow, all" />
+        <title>Yampee_Redis_Client | API</title>
+                    <link rel="stylesheet" type="text/css" href="stylesheet.css">
+                            </head>
+        <body id="class">
+            <div class="header">
+        <ul>
+            <li><a href="classes.html">Classes</a></li>
+                        <li><a href="interfaces.html">Interfaces</a></li>
+            <li><a href="doc-index.html">Index</a></li>
+            
+        </ul>
+
+        <div id="title">API</div>
+
+            <div class="type">Class</div>
+    <h1><a href=".html"></a>Yampee_Redis_Client</h1>
+    </div>
+        <div class="content">
+                <p>class    <strong>Yampee_Redis_Client</strong></p>
+
+            <div class="description">
+            <p>Implements a Redis client for PHP 5.2.</p>
+            <p>Redis version compatibility: 2.6.9 (and below).</p>
+        </div>
+    
+    
+    
+            <h2>Methods</h2>
+
+            <table>
+                    <tr>
+                <td class="type">
+                    
+                </td>
+                <td class="last">
+                    <a href="#method___construct">__construct</a>(string $host = &#039;localhost&#039;, int $port = 6379)
+                    <p>Constructor</p>
+                </td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type">
+                    <a href="Yampee_Redis_Client.html"><abbr title="Yampee_Redis_Client">Yampee_Redis_Client</abbr></a>
+                </td>
+                <td class="last">
+                    <a href="#method_connect">connect</a>()
+                    <p>Connect (or reconnect) to Reddis with given parameters</p>
+                </td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type">
+                    array|int|null|string
+                </td>
+                <td class="last">
+                    <a href="#method_get">get</a>(<abbr title="$key">$key</abbr> $key)
+                    <p>Get a value by its key.</p>
+                </td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type">
+                    array|int|null|string
+                </td>
+                <td class="last">
+                    <a href="#method_has">has</a>(<abbr title="$key">$key</abbr> $key)
+                    <p>Check if the given key exists in the database.</p>
+                </td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type">
+                    array|int|null|string
+                </td>
+                <td class="last">
+                    <a href="#method_set">set</a>(<abbr title="$key">$key</abbr> $key, <abbr title="$value">$value</abbr> $value, null $expire = null)
+                    <p>Set a value and its key.</p>
+                </td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type">
+                    array|int|null|string
+                </td>
+                <td class="last">
+                    <a href="#method_remove">remove</a>(<abbr title="$key">$key</abbr> $key)
+                    <p>Delete a key and its value from the database.</p>
+                </td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type">
+                    array|int|null|string
+                </td>
+                <td class="last">
+                    <a href="#method_authenticate">authenticate</a>(<abbr title="$password">$password</abbr> $password)
+                    <p>Try to authenticate the user using the given password to the Reddis server.</p>
+                </td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type">
+                    array|int|null|string
+                </td>
+                <td class="last">
+                    <a href="#method_persist">persist</a>(<abbr title="$key">$key</abbr> $key)
+                    <p>Remove the expiration from a key.</p>
+                </td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type">
+                    array|int|null|string
+                </td>
+                <td class="last">
+                    <a href="#method_findKeys">findKeys</a>(<abbr title="$pattern">$pattern</abbr> $pattern = &#039;*&#039;)
+                    <p>Find all the keys mathcing the pattern.</p>
+                </td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type">
+                    array|int|null|string
+                </td>
+                <td class="last">
+                    <a href="#method_flush">flush</a>()
+                    <p>Delete all the keys of the currently selected database.</p>
+                </td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type">
+                    array|int|null|string
+                </td>
+                <td class="last">
+                    <a href="#method_getStats">getStats</a>()
+                    <p>Get information and statistics about the Redis server.</p>
+                </td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type">
+                    array|int|null|string
+                </td>
+                <td class="last">
+                    <a href="#method_getParameter">getParameter</a>(<abbr title="$parameterName">$parameterName</abbr> $parameterName)
+                    <p>Get a config element value by its name.</p>
+                </td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type">
+                    array|int|null|string
+                </td>
+                <td class="last">
+                    <a href="#method_setParameter">setParameter</a>(<abbr title="$parameterName">$parameterName</abbr> $parameterName, <abbr title="$value">$value</abbr> $value)
+                    <p>Set a config element value by its name.</p>
+                </td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type">
+                    array|int|null|string
+                </td>
+                <td class="last">
+                    <a href="#method_getSize">getSize</a>()
+                    <p>Get the Redis database size.</p>
+                </td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type">
+                    array|int|null|string
+                </td>
+                <td class="last">
+                    <a href="#method_send">send</a>(<abbr title="$command">$command</abbr> $command, array $arguments = array())
+                    <p>Send a command to Reddis and return the reply.</p>
+                </td>
+                <td></td>
+            </tr>
+            </table>
+
+
+        <h2>Details</h2>
+
+                        <h3 id="method___construct">
+        <div class="location">at line 39</div>
+        <code>            public            
+    <strong>__construct</strong>(string $host = &#039;localhost&#039;, int $port = 6379)</code>
+    </h3>
+    <div class="details">
+        <p>Constructor</p>
+        <p></p>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table>
+                    <tr>
+                <td>string</td>
+                <td>$host</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>int</td>
+                <td>$port</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+                <h3 id="method_connect">
+        <div class="location">at line 50</div>
+        <code>            public            <a href="Yampee_Redis_Client.html"><abbr title="Yampee_Redis_Client">Yampee_Redis_Client</abbr></a>
+    <strong>connect</strong>()</code>
+    </h3>
+    <div class="details">
+        <p>Connect (or reconnect) to Reddis with given parameters</p>
+        <p></p>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table>
+        <tr>
+            <td><a href="Yampee_Redis_Client.html"><abbr title="Yampee_Redis_Client">Yampee_Redis_Client</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+                <h3 id="method_get">
+        <div class="location">at line 68</div>
+        <code>            public            array|int|null|string
+    <strong>get</strong>(<abbr title="$key">$key</abbr> $key)</code>
+    </h3>
+    <div class="details">
+        <p>Get a value by its key.</p>
+        <p></p>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table>
+                    <tr>
+                <td><abbr title="$key">$key</abbr></td>
+                <td>$key</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table>
+        <tr>
+            <td>array|int|null|string</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table>
+                    <tr>
+                <td><a href="Yampee_Redis_Exception_Error.html"><abbr title="Yampee_Redis_Exception_Error">Yampee_Redis_Exception_Error</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                    </div>
+    </div>
+
+                <h3 id="method_has">
+        <div class="location">at line 85</div>
+        <code>            public            array|int|null|string
+    <strong>has</strong>(<abbr title="$key">$key</abbr> $key)</code>
+    </h3>
+    <div class="details">
+        <p>Check if the given key exists in the database.</p>
+        <p></p>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table>
+                    <tr>
+                <td><abbr title="$key">$key</abbr></td>
+                <td>$key</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table>
+        <tr>
+            <td>array|int|null|string</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+                <h3 id="method_set">
+        <div class="location">at line 98</div>
+        <code>            public            array|int|null|string
+    <strong>set</strong>(<abbr title="$key">$key</abbr> $key, <abbr title="$value">$value</abbr> $value, null $expire = null)</code>
+    </h3>
+    <div class="details">
+        <p>Set a value and its key.</p>
+        <p></p>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table>
+                    <tr>
+                <td><abbr title="$key">$key</abbr></td>
+                <td>$key</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><abbr title="$value">$value</abbr></td>
+                <td>$value</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>null</td>
+                <td>$expire</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table>
+        <tr>
+            <td>array|int|null|string</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+                <h3 id="method_remove">
+        <div class="location">at line 113</div>
+        <code>            public            array|int|null|string
+    <strong>remove</strong>(<abbr title="$key">$key</abbr> $key)</code>
+    </h3>
+    <div class="details">
+        <p>Delete a key and its value from the database.</p>
+        <p></p>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table>
+                    <tr>
+                <td><abbr title="$key">$key</abbr></td>
+                <td>$key</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table>
+        <tr>
+            <td>array|int|null|string</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+                <h3 id="method_authenticate">
+        <div class="location">at line 124</div>
+        <code>            public            array|int|null|string
+    <strong>authenticate</strong>(<abbr title="$password">$password</abbr> $password)</code>
+    </h3>
+    <div class="details">
+        <p>Try to authenticate the user using the given password to the Reddis server.</p>
+        <p></p>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table>
+                    <tr>
+                <td><abbr title="$password">$password</abbr></td>
+                <td>$password</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table>
+        <tr>
+            <td>array|int|null|string</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+                <h3 id="method_persist">
+        <div class="location">at line 135</div>
+        <code>            public            array|int|null|string
+    <strong>persist</strong>(<abbr title="$key">$key</abbr> $key)</code>
+    </h3>
+    <div class="details">
+        <p>Remove the expiration from a key.</p>
+        <p></p>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table>
+                    <tr>
+                <td><abbr title="$key">$key</abbr></td>
+                <td>$key</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table>
+        <tr>
+            <td>array|int|null|string</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+                <h3 id="method_findKeys">
+        <div class="location">at line 148</div>
+        <code>            public            array|int|null|string
+    <strong>findKeys</strong>(<abbr title="$pattern">$pattern</abbr> $pattern = &#039;*&#039;)</code>
+    </h3>
+    <div class="details">
+        <p>Find all the keys mathcing the pattern.</p>
+        <p>See more about the pattern on Redis documentation:</p>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table>
+                    <tr>
+                <td><abbr title="$pattern">$pattern</abbr></td>
+                <td>$pattern</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table>
+        <tr>
+            <td>array|int|null|string</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+                <h3 id="method_flush">
+        <div class="location">at line 158</div>
+        <code>            public            array|int|null|string
+    <strong>flush</strong>()</code>
+    </h3>
+    <div class="details">
+        <p>Delete all the keys of the currently selected database.</p>
+        <p></p>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table>
+        <tr>
+            <td>array|int|null|string</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+                <h3 id="method_getStats">
+        <div class="location">at line 168</div>
+        <code>            public            array|int|null|string
+    <strong>getStats</strong>()</code>
+    </h3>
+    <div class="details">
+        <p>Get information and statistics about the Redis server.</p>
+        <p></p>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table>
+        <tr>
+            <td>array|int|null|string</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+                <h3 id="method_getParameter">
+        <div class="location">at line 179</div>
+        <code>            public            array|int|null|string
+    <strong>getParameter</strong>(<abbr title="$parameterName">$parameterName</abbr> $parameterName)</code>
+    </h3>
+    <div class="details">
+        <p>Get a config element value by its name.</p>
+        <p></p>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table>
+                    <tr>
+                <td><abbr title="$parameterName">$parameterName</abbr></td>
+                <td>$parameterName</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table>
+        <tr>
+            <td>array|int|null|string</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+                <h3 id="method_setParameter">
+        <div class="location">at line 191</div>
+        <code>            public            array|int|null|string
+    <strong>setParameter</strong>(<abbr title="$parameterName">$parameterName</abbr> $parameterName, <abbr title="$value">$value</abbr> $value)</code>
+    </h3>
+    <div class="details">
+        <p>Set a config element value by its name.</p>
+        <p></p>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table>
+                    <tr>
+                <td><abbr title="$parameterName">$parameterName</abbr></td>
+                <td>$parameterName</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><abbr title="$value">$value</abbr></td>
+                <td>$value</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table>
+        <tr>
+            <td>array|int|null|string</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+                <h3 id="method_getSize">
+        <div class="location">at line 201</div>
+        <code>            public            array|int|null|string
+    <strong>getSize</strong>()</code>
+    </h3>
+    <div class="details">
+        <p>Get the Redis database size.</p>
+        <p></p>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table>
+        <tr>
+            <td>array|int|null|string</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+                <h3 id="method_send">
+        <div class="location">at line 217</div>
+        <code>            public            array|int|null|string
+    <strong>send</strong>(<abbr title="$command">$command</abbr> $command, array $arguments = array())</code>
+    </h3>
+    <div class="details">
+        <p>Send a command to Reddis and return the reply.</p>
+        <p></p>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table>
+                    <tr>
+                <td><abbr title="$command">$command</abbr></td>
+                <td>$command</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$arguments</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table>
+        <tr>
+            <td>array|int|null|string</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+    
+            </div>
+            <div id="footer">
+        Generated by <a href="http://sami.sensiolabs.org/" target="_top">Sami, the API Documentation Generator</a>.
+    </div>
+    </body>
+</html>
