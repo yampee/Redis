@@ -11,7 +11,6 @@
 
 /**
  * Implements a Redis client for PHP 5.2.
- * Redis version compatibility: 2.6.9 (and below).
  */
 class Yampee_Redis_Client
 {
@@ -277,28 +276,24 @@ class Yampee_Redis_Client
 		}
 
 		$reply = trim($reply);
-		$response = null;
 
-		/**
-		 * Thanks to Justin Poliey for original code of parsing the answer https://github.com/jdp
-		 * Error was fixed there: https://github.com/jamm/redisent
-		 */
 		switch ($reply[0]) {
-			/* Error reply */
+			// An error occured
 			case '-':
 				throw new Yampee_Redis_Exception_Error($reply);
 				break;
 
-			/* Inline reply */
+			// Inline response
 			case '+':
 				return substr($reply, 1);
 				break;
 
-			/* Bulk reply */
+			// Bulk response
 			case '$':
 				$response = null;
 
 				if ($reply == '$-1') {
+					return false;
 					break;
 				}
 
@@ -314,7 +309,7 @@ class Yampee_Redis_Client
 				return $response;
 				break;
 
-			/* Multi-bulk reply */
+			// Multi-bulk response
 			case '*':
 				$count = substr($reply, 1);
 
@@ -331,11 +326,12 @@ class Yampee_Redis_Client
 				return $response;
 				break;
 
-			/* Integer reply */
+			// Integer response
 			case ':':
 				return intval(substr($reply, 1));
 				break;
 
+			// Error: not supported
 			default:
 				throw new Yampee_Redis_Exception_Error('Non-protocol answer: '.print_r($reply, 1));
 		}

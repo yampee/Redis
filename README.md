@@ -4,8 +4,7 @@ Yampee Redis: a PHP library that speaks with Redis!
 What is Yampee Redis ?
 ----------------------------
 
-Yampee Annotations is a PHP library to send command to Redis easily.
-It supports many kind of connections, using sockets.
+Yampee Redis is a PHP library to maanage a connection with Redis easily.
 
 An example ?
 
@@ -19,6 +18,8 @@ if ($redis->has('key')) {
 	$redis->get('key');
 }
 ```
+
+Yampee Redis is compatible with Reddis 2.6.9 (and below).
 
 Redis
 -------------

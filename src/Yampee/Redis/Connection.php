@@ -10,7 +10,7 @@
  */
 
 /**
- * Yampee_Reddis_Connection represents a Reddis connection.
+ * Represents a Reddis connection.
  */
 class Yampee_Redis_Connection
 {
