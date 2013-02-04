@@ -4,7 +4,7 @@ Yampee Redis: a PHP library that speaks with Redis!
 What is Yampee Redis ?
 ----------------------------
 
-Yampee Redis is a PHP library to maanage a connection with Redis easily.
+Yampee Redis is a PHP library to manage a connection with Redis easily.
 
 An example ?
 
