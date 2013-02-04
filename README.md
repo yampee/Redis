@@ -19,6 +19,8 @@ if ($redis->has('key')) {
 }
 ```
 
+See the demo file to discover all the possibilites (`demo/index.php`).
+
 Yampee Redis is compatible with Reddis 2.6.9 (and below).
 
 Redis
