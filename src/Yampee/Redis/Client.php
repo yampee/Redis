@@ -14,6 +14,12 @@
  */
 class Yampee_Redis_Client
 {
+	const LIST_PUSH_RIGHT = 10;
+	const LIST_PUSH_LEFT = 20;
+
+	const LIST_POP_RIGHT = 10;
+	const LIST_POP_LEFT = 20;
+
 	/**
 	 * @var Yampee_Redis_Connection
 	 */
@@ -61,7 +67,7 @@ class Yampee_Redis_Client
 	 * Get a value by its key.
 	 *
 	 * @param $key
-	 * @return array|int|null|string
+	 * @return mixed
 	 * @throws Yampee_Redis_Exception_Error
 	 */
 	public function get($key)
@@ -79,11 +85,11 @@ class Yampee_Redis_Client
 	 * Check if the given key exists in the database.
 	 *
 	 * @param $key
-	 * @return array|int|null|string
+	 * @return mixed
 	 */
 	public function has($key)
 	{
-		return $this->send('exists', array($key));
+		return (boolean) $this->send('exists', array($key));
 	}
 
 	/**
@@ -92,7 +98,7 @@ class Yampee_Redis_Client
 	 * @param      $key
 	 * @param      $value
 	 * @param null $expire
-	 * @return array|int|null|string
+	 * @return mixed
 	 */
 	public function set($key, $value, $expire = null)
 	{
@@ -104,10 +110,96 @@ class Yampee_Redis_Client
 	}
 
 	/**
+	 * Add a value in a list.
+	 *
+	 * @param $listName
+	 * @param $value
+	 * @param $pushType
+	 * @return mixed
+	 */
+	public function listPush($listName, $value, $pushType = self::LIST_PUSH_RIGHT)
+	{
+		$command = 'rpush';
+
+		if ($pushType == self::LIST_PUSH_LEFT) {
+			$command = 'lpush';
+		}
+
+		return $this->send($command, array($listName, $value));
+	}
+
+	/**
+	 * Remove the first or the last value from a list.
+	 *
+	 * @param $listName
+	 * @param $popType
+	 * @return mixed
+	 */
+	public function listPop($listName, $popType = self::LIST_POP_RIGHT)
+	{
+		$command = 'rpop';
+
+		if ($popType == self::LIST_POP_LEFT) {
+			$command = 'lpop';
+		}
+
+		return $this->send($command, array($listName));
+	}
+
+	/**
+	 * Get an element from a list by its index
+	 *
+	 * @param $listName
+	 * @param $index
+	 * @return mixed
+	 */
+	public function listGet($listName, $index)
+	{
+		return $this->send('lindex', array($listName, $index));
+	}
+
+	/**
+	 * Set an element from a list by its index
+	 *
+	 * @param $listName
+	 * @param $index
+	 * @param $value
+	 * @return mixed
+	 */
+	public function listSet($listName, $index, $value)
+	{
+		return $this->send('lset', array($listName, $index, $value));
+	}
+
+	/**
+	 * Get a range of elements from a list.
+	 *
+	 * @param $listName
+	 * @param $firstIndex
+	 * @param $lastIndex
+	 * @return mixed
+	 */
+	public function listGetRange($listName, $firstIndex, $lastIndex)
+	{
+		return $this->send('lrange', array($listName, $firstIndex, $lastIndex));
+	}
+
+	/**
+	 * Get a list length.
+	 *
+	 * @param $listName
+	 * @return mixed
+	 */
+	public function listLength($listName)
+	{
+		return $this->send('llen', array($listName));
+	}
+
+	/**
 	 * Delete a key and its value from the database.
 	 *
 	 * @param      $key
-	 * @return array|int|null|string
+	 * @return mixed
 	 */
 	public function remove($key)
 	{
@@ -118,7 +210,7 @@ class Yampee_Redis_Client
 	 * Try to authenticate the user using the given password to the Reddis server.
 	 *
 	 * @param $password
-	 * @return array|int|null|string
+	 * @return mixed
 	 */
 	public function authenticate($password)
 	{
@@ -129,7 +221,7 @@ class Yampee_Redis_Client
 	 * Remove the expiration from a key.
 	 *
 	 * @param $key
-	 * @return array|int|null|string
+	 * @return mixed
 	 */
 	public function persist($key)
 	{
@@ -137,12 +229,12 @@ class Yampee_Redis_Client
 	}
 
 	/**
-	 * Find all the keys mathcing the pattern.
+	 * Find all the keys matching the pattern.
 	 * See more about the pattern on Redis documentation:
 	 *      @link http://redis.io/commands/keys
 	 *
 	 * @param $pattern
-	 * @return array|int|null|string
+	 * @return mixed
 	 */
 	public function findKeys($pattern = '*')
 	{
@@ -152,7 +244,7 @@ class Yampee_Redis_Client
 	/**
 	 * Delete all the keys of the currently selected database.
 	 *
-	 * @return array|int|null|string
+	 * @return mixed
 	 */
 	public function flush()
 	{
@@ -162,7 +254,7 @@ class Yampee_Redis_Client
 	/**
 	 * Get information and statistics about the Redis server.
 	 *
-	 * @return array|int|null|string
+	 * @return mixed
 	 */
 	public function getStats()
 	{
@@ -173,7 +265,7 @@ class Yampee_Redis_Client
 	 * Get a config element value by its name.
 	 *
 	 * @param $parameterName
-	 * @return array|int|null|string
+	 * @return mixed
 	 */
 	public function getParameter($parameterName)
 	{
@@ -185,7 +277,7 @@ class Yampee_Redis_Client
 	 *
 	 * @param $parameterName
 	 * @param $value
-	 * @return array|int|null|string
+	 * @return mixed
 	 */
 	public function setParameter($parameterName, $value)
 	{
@@ -195,7 +287,7 @@ class Yampee_Redis_Client
 	/**
 	 * Get the Redis database size.
 	 *
-	 * @return array|int|null|string
+	 * @return mixed
 	 */
 	public function getSize()
 	{
@@ -211,7 +303,7 @@ class Yampee_Redis_Client
 	 *
 	 * @param       $command
 	 * @param array $arguments
-	 * @return array|int|null|string
+	 * @return mixed
 	 */
 	public function send($command, array $arguments = array())
 	{
@@ -222,7 +314,7 @@ class Yampee_Redis_Client
 	 * Execute a command with Redis and return the result.
 	 *
 	 * @param array $arguments
-	 * @return array|int|null|string
+	 * @return mixed
 	 * @throws Yampee_Redis_Exception_Command
 	 */
 	protected function execute(array $arguments)
@@ -256,7 +348,7 @@ class Yampee_Redis_Client
 	 * Read a Redis reply.
 	 *
 	 * @param $command
-	 * @return array|int|null|string
+	 * @return mixed
 	 * @throws Yampee_Redis_Exception_ReadReply
 	 * @throws Yampee_Redis_Exception_Error
 	 */
