@@ -303,7 +303,7 @@ class Yampee_Redis_Client
 					$response = stream_get_contents($this->connection->getSocket(), $size);
 				}
 
-				/* discard crlf */
+				// Discard crlf
 				$this->connection->positionRead(2);
 
 				return $response;

@@ -5,7 +5,7 @@ Basic usage
 -----------------------
 
 The client is based on the `send()` method, which send a command to Redis.
-For instance, to get a valueby its key, you will send a GET command:
+For instance, to get a value by its key, you will send a GET command:
 
 ``` php
 <?php
