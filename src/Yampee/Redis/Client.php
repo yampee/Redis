@@ -91,6 +91,17 @@ class Yampee_Redis_Client
 	{
 		return (boolean) $this->send('exists', array($key));
 	}
+        
+        /**
+	 * Delete a key from the database.
+	 *
+	 * @param $key
+	 * @return mixed
+	 */
+	public function delete($key)
+	{
+		return $this->send('del', array($key));
+	}
 
 	/**
 	 * Set a value and its key.
