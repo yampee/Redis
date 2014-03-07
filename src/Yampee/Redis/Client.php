@@ -98,7 +98,7 @@ class Yampee_Redis_Client
 	 * @param $key
 	 * @return mixed
 	 */
-	public function delete($key)
+	public function del($key)
 	{
 		return $this->send('del', array($key));
 	}
