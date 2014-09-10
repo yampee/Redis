@@ -191,7 +191,7 @@ class Yampee_Redis_Client
 	 */
 	public function hashSet($hashName, $key, $value)
 	{
-		return $this->send('hset', array($hashName, $key, $value));
+		return (boolean) $this->send('hset', array($hashName, $key, $value));
 	}
         
         /**
@@ -203,7 +203,7 @@ class Yampee_Redis_Client
 	 */
 	public function hashDelete($hashName, $key)
 	{
-		return $this->send('hdel', array($hashName, $key));
+		return (boolean) $this->send('hdel', array($hashName, $key));
 	}
         
 	/**
