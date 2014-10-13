@@ -91,6 +91,17 @@ class Yampee_Redis_Client
 	{
 		return (boolean) $this->send('exists', array($key));
 	}
+        
+        /**
+	 * Delete a key from the database.
+	 *
+	 * @param $key
+	 * @return mixed
+	 */
+	public function del($key)
+	{
+		return $this->send('del', array($key));
+	}
 
 	/**
 	 * Set a value and its key.
@@ -157,7 +168,44 @@ class Yampee_Redis_Client
 	{
 		return $this->send('lindex', array($listName, $index));
 	}
+        
+        /**
+	 * Get an element from a hash by its key
+	 *
+	 * @param $hashName
+	 * @param $key
+	 * @return mixed
+	 */
+	public function hashGet($hashName, $key)
+	{
+		return $this->send('hget', array($hashName, $key));
+	}
 
+        /**
+	 * Set an element on a hash by its key
+	 *
+	 * @param $hashName
+	 * @param $key
+	 * @param $value
+	 * @return mixed
+	 */
+	public function hashSet($hashName, $key, $value)
+	{
+		return (boolean) $this->send('hset', array($hashName, $key, $value));
+	}
+        
+        /**
+	 * Delete an element from a hash by its key
+	 *
+	 * @param $hashName
+	 * @param $key
+	 * @return mixed
+	 */
+	public function hashDelete($hashName, $key)
+	{
+		return (boolean) $this->send('hdel', array($hashName, $key));
+	}
+        
 	/**
 	 * Set an element from a list by its index
 	 *
